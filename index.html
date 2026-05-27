@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>PLAZA PONTAL</title>
+    <style>
+        :root {
+            --bg: #0a0a0b;
+            --card: #111113;
+            --border: #1f1f22;
+            --text: #fafafa;
+            --text2: #a1a1aa;
+            --green: #22c55e;
+            --red: #ef4444;
+            --blue: #3b82f6;
+            --yellow: #eab308;
+            --orange: #f97316;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            user-select: none;
+        }
+
+        .login-screen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+            padding: 24px;
+        }
+
+        .login-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px 28px;
+            width: 100%;
+            max-width: 360px;
+        }
+
+        .login-icon {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .login-box h1 {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--green);
+            margin-bottom: 4px;
+            letter-spacing: -0.5px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .login-box .subtle {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text2);
+            margin-bottom: 32px;
+        }
+
+        .field { margin-bottom: 14px; }
+
+        .field input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 14px;
+            border: 1.5px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        .field input:focus { outline: none; border-color: var(--green); }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+
+        .btn-green { background: var(--green); color: #000; }
+        .btn-red { background: var(--red); color: #fff; }
+        .btn-blue { background: var(--blue); color: #fff; }
+        .btn-wpp { background: #25D366; color: #fff; }
+        .btn-orange { background: var(--orange); color: #fff; }
+        .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text2); }
+
+        .error-msg { color: var(--red); font-size: 13px; text-align: center; margin-top: 8px; display: none; }
+
+        .dashboard { min-height: 100vh; background: var(--bg); }
+
+        .header {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header h2 { font-size: 17px; font-weight: 700; color: var(--green); letter-spacing: -0.3px; }
+        .header .op { font-size: 12px; color: var(--text2); }
+
+        .content { padding: 16px; max-width: 520px; margin: 0 auto; }
+
+        .stats-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+
+        .stat-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px 10px;
+            text-align: center;
+        }
+
+        .stat-item .val { font-size: 26px; font-weight: 700; line-height: 1; }
+        .stat-item .val.green { color: var(--green); }
+        .stat-item .val.blue { color: var(--blue); }
+        .stat-item .val.red { color: var(--red); }
+        .stat-item .val.yellow { color: var(--yellow); }
+
+        .stat-item .lbl { font-size: 10px; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+        .stat-item .sub { font-size: 9px; color: var(--text2); margin-top: 2px; }
+
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 18px; margin-bottom: 14px; }
+        .card h3 { font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+
+        .form-row { display: flex; flex-direction: column; gap: 8px; }
+        .form-row-inline { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+        .form-row input, .form-row select, .form-row-inline input, .form-row-inline select {
+            padding: 13px 14px;
+            border-radius: 12px;
+            border: 1.5px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .form-row input:focus, .form-row select:focus, .form-row-inline input:focus, .form-row-inline select:focus {
+            outline: none; border-color: var(--blue);
+        }
+
+        .vehicle-item { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 14px; margin-bottom: 8px; }
+        .vehicle-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .vehicle-placa { font-size: 19px; font-weight: 700; letter-spacing: 0.5px; }
+        .vehicle-tipo { display: inline-block; font-size: 13px; margin-left: 6px; }
+
+        .tag { font-size: 10px; padding: 3px 10px; border-radius: 20px; font-weight: 600; }
+        .tag-active { background: rgba(34,197,94,0.15); color: var(--green); }
+        .tag-free { background: rgba(234,179,8,0.15); color: var(--yellow); }
+        .tag-time { background: rgba(59,130,246,0.15); color: var(--blue); font-size: 12px; padding: 5px 12px; border-radius: 8px; display: inline-block; margin: 4px 0 8px; }
+
+        .vehicle-detail { font-size: 12px; color: var(--text2); margin-bottom: 3px; }
+        .vehicle-detail b { color: #d4d4d8; font-weight: 500; }
+
+        .cor-badge {
+            display: inline-block; width: 14px; height: 14px; border-radius: 50%;
+            border: 2px solid #3f3f46; vertical-align: middle; margin-right: 4px;
+        }
+
+        .btn-block { width: 100%; padding: 11px; border: none; border-radius: 10px; font-weight: 600; font-size: 13px; cursor: pointer; margin-top: 6px; }
+        .empty { text-align: center; color: #52525b; padding: 24px; font-size: 13px; }
+
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
+        .modal-overlay.show { display: flex; }
+
+        .modal-box { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 22px; width: 100%; max-width: 380px; max-height: 90vh; overflow-y: auto; }
+        .modal-box h3 { font-size: 16px; margin-bottom: 12px; }
+
+        .receipt {
+            background: var(--bg); border-radius: 12px; padding: 14px; font-size: 13px;
+            line-height: 1.7; white-space: pre-wrap; margin-bottom: 14px; max-height: 280px; overflow-y: auto;
+        }
+
+        .modal-actions { display: flex; gap: 8px; }
+        .modal-actions button { flex: 1; padding: 12px; border: none; border-radius: 10px; font-weight: 600; font-size: 13px; cursor: pointer; }
+        select option { background: #1a1a1a; color: #fff; }
+
+        .debug-console {
+            background: #000; color: #0f0; font-family: monospace; font-size: 10px;
+            padding: 8px; border-radius: 8px; margin-top: 8px; max-height: 120px; overflow-y: auto; display: none;
+        }
+
+        .admin-section { border: 1px dashed var(--orange); border-radius: 12px; padding: 12px; margin-bottom: 10px; }
+        .admin-section h4 { font-size: 12px; color: var(--orange); margin-bottom: 8px; text-transform: uppercase; }
+        .admin-row { display: grid; grid-template-columns: 1fr 80px; gap: 8px; align-items: end; margin-bottom: 8px; }
+        .admin-row label { font-size: 11px; color: var(--text2); }
+        .admin-row input { padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 13px; text-align: center; }
+        .admin-badge { display: inline-block; background: rgba(249,115,22,0.2); color: var(--orange); padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; margin-left: 6px; }
+    </style>
+</head>
+<body>
+
+    <!-- LOGIN -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-box">
+            <div class="login-icon">P</div>
+            <h1 id="tituloLogin">PLAZA PONTAL</h1>
+            <p class="subtle">Estacionamento</p>
+            <div class="field"><input type="text" id="loginEmail" placeholder="Email" autocomplete="off"></div>
+            <div class="field"><input type="password" id="loginSenha" placeholder="Senha"></div>
+            <p class="error-msg" id="loginError"></p>
+            <button class="btn btn-green" id="loginBtn" onclick="doLogin()">ENTRAR</button>
+            <div class="debug-console" id="debugConsole"></div>
+            <button class="btn btn-ghost" style="margin-top:8px;font-size:11px;padding:8px;" onclick="toggleDebug()">Debug</button>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboardScreen" class="dashboard" style="display:none">
+        <div class="header">
+            <div>
+                <h2>PLAZA PONTAL</h2>
+                <span class="op" id="headerOp"></span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <span style="font-size:11px;color:var(--text2)" id="connStatus"></span>
+                <button class="btn btn-ghost" style="padding:8px 14px;font-size:12px;" onclick="logout()">Sair</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="val green" id="vagasCarros">28</div>
+                    <div class="lbl">Vagas Carros</div>
+                    <div class="sub" id="ocupadasCarros">0 ocupadas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="val blue" id="vagasMotos">40</div>
+                    <div class="lbl">Vagas Motos</div>
+                    <div class="sub" id="ocupadasMotos">0 ocupadas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="val yellow" id="stAtivos">0</div>
+                    <div class="lbl">No Patio</div>
+                    <div class="sub">Total veiculos</div>
+                </div>
+            </div>
+
+            <div class="card" id="painelAdmin" style="display:none;">
+                <h3>Painel Administrativo <span class="admin-badge">ADMIN</span></h3>
+                <div class="admin-section">
+                    <h4>Configurar Vagas</h4>
+                    <div class="admin-row">
+                        <label>Vagas Carros:</label>
+                        <input type="number" id="cfgVagasCarros" value="28" min="1" max="200">
+                    </div>
+                    <div class="admin-row">
+                        <label>Vagas Motos:</label>
+                        <input type="number" id="cfgVagasMotos" value="40" min="1" max="300">
+                    </div>
+                    <button class="btn btn-orange btn-block" onclick="salvarVagas()">Salvar Vagas</button>
+                </div>
+                <div class="admin-section">
+                    <h4>Relatorios</h4>
+                    <button class="btn btn-wpp btn-block" onclick="enviarRelatorio()">Relatorio WhatsApp</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Registrar Entrada</h3>
+                <div class="form-row">
+                    <input type="text" id="fPlaca" placeholder="Placa (ex: ABC1D23)" maxlength="7" style="text-transform:uppercase;font-weight:600;font-size:16px;letter-spacing:1px;">
+                    <div class="form-row-inline">
+                        <select id="fTipo"><option value="">Tipo</option><option value="Carro">Carro</option><option value="Moto">Moto</option></select>
+                        <select id="fCor"><option value="">Cor</option><option value="Branco">Branco</option><option value="Preto">Preto</option><option value="Prata">Prata</option><option value="Cinza">Cinza</option><option value="Vermelho">Vermelho</option><option value="Azul">Azul</option><option value="Verde">Verde</option><option value="Amarelo">Amarelo</option><option value="Laranja">Laranja</option><option value="Marrom">Marrom</option><option value="Bege">Bege</option></select>
+                    </div>
+                    <select id="fLocal"><option value="">Estabelecimento</option><option value="Academia">Academia (2h gratis)</option><option value="Farmacia">Farmacia (1h gratis)</option><option value="Mercado">Mercado (1h gratis)</option><option value="Visitante">Visitante (sem carencia)</option></select>
+                    <button class="btn btn-blue" id="btnEntrada" onclick="registrarEntrada()">REGISTRAR ENTRADA</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>No Patio</h3>
+                <div id="ativosList"></div>
+            </div>
+
+            <button class="btn btn-wpp" style="margin-top:4px;" onclick="enviarRelatorio()">Relatorio WhatsApp</button>
+            <div class="debug-console" id="debugConsole2"></div>
+        </div>
+    </div>
+
+    <!-- MODAL COMPROVANTE -->
+    <div id="modalRecibo" class="modal-overlay">
+        <div class="modal-box">
+            <h3>Saida Registrada</h3>
+            <div class="receipt" id="reciboText"></div>
+            <div class="modal-actions">
+                <button class="btn-wpp" onclick="enviarRecibo()">WhatsApp</button>
+                <button class="btn-ghost" onclick="closeModal()">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CONFIG -->
+    <div id="modalConfig" class="modal-overlay">
+        <div class="modal-box">
+            <h3>Configuracao</h3>
+            <p style="font-size:12px;color:var(--text2);margin-bottom:12px;">URL do Google Apps Script</p>
+            <input type="text" id="cfgUrl" placeholder="https://script.google.com/..." style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:13px;margin-bottom:12px;">
+            <div style="display:flex;gap:8px;">
+                <button class="btn btn-blue" onclick="saveConfig()">Salvar</button>
+                <button class="btn btn-green" onclick="testarConexao()">Testar</button>
+            </div>
+            <button class="btn btn-ghost" style="margin-top:8px;" onclick="closeConfig()">Cancelar</button>
+            <div class="debug-console" id="debugConfig" style="display:block;margin-top:8px;"></div>
+        </div>
+    </div>
+
+    <script>
+        var CARENCIAS = { 'Academia': 120, 'Farmacia': 60, 'Mercado': 60, 'Visitante': 0 };
+        var TABELA_PRECOS = [{ ate: 60, valor: 15 },{ ate: 120, valor: 25 },{ ate: 180, valor: 35 },{ ate: 99999, valor: 90 }];
+        var CORES_MAP = {'Branco':'#ffffff','Preto':'#1a1a1a','Prata':'#c0c0c0','Cinza':'#808080','Vermelho':'#ef4444','Azul':'#3b82f6','Verde':'#22c55e','Amarelo':'#eab308','Laranja':'#f97316','Marrom':'#8B4513','Bege':'#f5deb3'};
+
+        var vagasCarros = 28, vagasMotos = 40, API_URL = '', usuario = null, movs = [], reciboAtual = '', timerInterval = null, debugMode = false;
+
+        function parseData(d) {
+            if(!d) return new Date();
+            if(d.indexOf('T')>-1||d.indexOf('Z')>-1){var dt=new Date(d);if(!isNaN(dt.getTime()))return dt;}
+            if(d.indexOf('/')>-1&&d.indexOf(' ')>-1){var p=d.split(' '),ds=p[0].split('/'),hs=(p[1]||'00:00:00').split(':'),a=parseInt(ds[0]),b=parseInt(ds[1]),dia,mes,ano;
+            if(a>12){dia=a;mes=b;}else if(b>12){mes=a;dia=b;}else{dia=a;mes=b;}
+            ano=parseInt(ds[2])||2024;var dt=new Date(ano,mes-1,dia,parseInt(hs[0])||0,parseInt(hs[1])||0,parseInt(hs[2])||0);if(!isNaN(dt.getTime()))return dt;}
+            var dt=new Date(d);return!isNaN(dt.getTime())?dt:new Date();
+        }
+
+        function formatarData(dt){var d=dt.getDate().toString().padStart(2,'0'),m=(dt.getMonth()+1).toString().padStart(2,'0'),a=dt.getFullYear(),h=dt.getHours().toString().padStart(2,'0'),min=dt.getMinutes().toString().padStart(2,'0'),s=dt.getSeconds().toString().padStart(2,'0');return d+'/'+m+'/'+a+' '+h+':'+min+':'+s;}
+
+        function formatarDataExibicao(d){if(!d)return '';try{var dt=parseData(d);if(dt&&!isNaN(dt.getTime()))return dt.toLocaleDateString('pt-BR')+' '+dt.toLocaleTimeString('pt-BR');}catch(e){}return d;}
+
+        function log(msg){console.log(msg);var n=new Date().toLocaleTimeString(),l='['+n+'] '+msg+'\n';['debugConsole','debugConsole2','debugConfig'].forEach(function(id){var e=document.getElementById(id);if(e){e.textContent+=l;e.scrollTop=e.scrollHeight;}});}
+
+        function toggleDebug(){debugMode=!debugMode;document.getElementById('debugConsole').style.display=debugMode?'block':'none';document.getElementById('debugConsole2').style.display=debugMode?'block':'none';}
+
+        window.onload=function(){
+            log('Sistema iniciado');
+            var vc=localStorage.getItem('_pp_vagas_carros'),vm=localStorage.getItem('_pp_vagas_motos');
+            if(vc)vagasCarros=parseInt(vc);if(vm)vagasMotos=parseInt(vm);
+            var u=localStorage.getItem('_pp_url');if(u)API_URL=u;
+            var s=localStorage.getItem('_pp_user');if(s){try{usuario=JSON.parse(s);showDash();}catch(e){localStorage.removeItem('_pp_user');}}
+            timerInterval=setInterval(refreshUI,30000);
+            var taps=0;
+            document.getElementById('tituloLogin').addEventListener('click',function(){taps++;if(taps>=10){taps=0;loginEmergencia();}setTimeout(function(){taps=0;},3000);});
+        };
+
+        function loginEmergencia(){usuario={nome:'Admin (Emergencia)',email:'admin',tipo:'Admin'};localStorage.setItem('_pp_user',JSON.stringify(usuario));alert('Login de emergencia!');showDash();}
+
+        async function testarConexao(){
+            var url=document.getElementById('cfgUrl').value.trim();
+            if(!url){alert('Cole a URL!');return;}
+            try{
+                var fd=new FormData();
+                fd.append('PLACA','TESTE');fd.append('TIPO','Carro');fd.append('COR','Preto');
+                fd.append('ESTABELECIMENTO','Visitante');fd.append('ISENTO','Nao');
+                fd.append('ENTRADA',formatarData(new Date()));fd.append('OPERADOR','Sistema');fd.append('STATUS','ATIVO');
+                await fetch(url,{method:'POST',body:fd});
+                alert('CONEXAO FUNCIONANDO!');
+            }catch(e){alert('Falhou: '+e.message);}
+        }
+
+        async function doLogin(){
+            var email=document.getElementById('loginEmail').value.trim(),senha=document.getElementById('loginSenha').value.trim();
+            if(!email||!senha){showErr('Preencha todos os campos');return;}
+            var btn=document.getElementById('loginBtn');btn.disabled=true;btn.textContent='...';
+            var ops=[{NOME:'Admin',EMAIL:'admin',SENHA:'123456',TIPO:'Admin'},{NOME:'Wesley',EMAIL:'wesley',SENHA:'123456',TIPO:'Operador'},{NOME:'Jefferson',EMAIL:'jefferson',SENHA:'123456',TIPO:'Operador'}];
+            if(API_URL){try{var r=await fetch(API_URL+'?tipo=operadores');var d=await r.json();if(d&&d.length>0)ops=d;}catch(e){}}
+            var ok=false;
+            for(var i=0;i<ops.length;i++){if(String(ops[i].EMAIL).toLowerCase()===email.toLowerCase()&&String(ops[i].SENHA)===senha){usuario={nome:ops[i].NOME||'Operador',email:ops[i].EMAIL,tipo:ops[i].TIPO||'Operador'};ok=true;break;}}
+            if(ok){localStorage.setItem('_pp_user',JSON.stringify(usuario));showDash();}
+            else{showErr('Email ou senha invalidos');}
+            btn.disabled=false;btn.textContent='ENTRAR';
+        }
+
+        function showErr(m){var e=document.getElementById('loginError');e.textContent=m;e.style.display='block';setTimeout(function(){e.style.display='none';},3000);}
+
+        function showDash(){
+            document.getElementById('loginScreen').style.display='none';
+            document.getElementById('dashboardScreen').style.display='block';
+            document.getElementById('headerOp').textContent='Operador: '+usuario.nome;
+            if(usuario.tipo==='Admin'){document.getElementById('painelAdmin').style.display='block';document.getElementById('cfgVagasCarros').value=vagasCarros;document.getElementById('cfgVagasMotos').value=vagasMotos;}
+            else{document.getElementById('painelAdmin').style.display='none';}
+            loadData();
+        }
+
+        function logout(){clearInterval(timerInterval);localStorage.removeItem('_pp_user');usuario=null;movs=[];document.getElementById('loginScreen').style.display='flex';document.getElementById('dashboardScreen').style.display='none';}
+
+        function salvarVagas(){
+            if(!usuario||usuario.tipo!=='Admin'){alert('Apenas administradores!');return;}
+            var vc=parseInt(document.getElementById('cfgVagasCarros').value)||28,vm=parseInt(document.getElementById('cfgVagasMotos').value)||40;
+            vagasCarros=vc;vagasMotos=vm;
+            localStorage.setItem('_pp_vagas_carros',vc);localStorage.setItem('_pp_vagas_motos',vm);
+            alert('Vagas atualizadas! Carros: '+vc+' | Motos: '+vm);refreshUI();
+        }
+
+        async function loadData(){
+            var local=localStorage.getItem('_pp_data');movs=local?JSON.parse(local):[];
+            if(API_URL){try{var r=await fetch(API_URL);var d=await r.json();if(d&&d.length>0){movs=d;saveLocal();}document.getElementById('connStatus').textContent='Online';}catch(e){document.getElementById('connStatus').textContent='Offline';}}
+            else{document.getElementById('connStatus').textContent='Local';}
+            refreshUI();
+        }
+
+        function saveLocal(){localStorage.setItem('_pp_data',JSON.stringify(movs));}
+
+        function refreshUI(){
+            var ativos=movs.filter(function(m){return m.STATUS==='ATIVO';});
+            var carrosAtivos=ativos.filter(function(m){return m.TIPO==='Carro';}).length;
+            var motosAtivos=ativos.filter(function(m){return m.TIPO==='Moto';}).length;
+            document.getElementById('vagasCarros').textContent=Math.max(0,vagasCarros-carrosAtivos);
+            document.getElementById('vagasMotos').textContent=Math.max(0,vagasMotos-motosAtivos);
+            document.getElementById('ocupadasCarros').textContent=carrosAtivos+' ocupadas';
+            document.getElementById('ocupadasMotos').textContent=motosAtivos+' ocupadas';
+            document.getElementById('stAtivos').textContent=ativos.length;
+
+            var now=new Date(),html='';
+            if(ativos.length===0){html='<div class="empty">Patio vazio</div>';}
+            else{
+                ativos.forEach(function(v){
+                    var entrada=parseData(v.ENTRADA),diffMin=Math.floor((now.getTime()-entrada.getTime())/60000);
+                    if(diffMin<0)diffMin=0;
+                    var h=Math.floor(diffMin/60),m=diffMin%60,tempoStr=h>0?h+'h '+m+'min':m+'min';
+                    var corHex=CORES_MAP[v.COR]||'#52525b',dataExibida=formatarDataExibicao(v.ENTRADA);
+                    html+='<div class="vehicle-item">';
+                    html+='<div class="vehicle-top"><div><span class="vehicle-placa">'+v.PLACA+'</span><span class="vehicle-tipo">'+(v.TIPO||'N/I')+'</span></div>';
+                    html+='<span class="tag '+(v.ISENTO==='Sim'?'tag-free':'tag-active')+'">'+(v.ISENTO==='Sim'?'Isento':'Ativo')+'</span></div>';
+                    html+='<div class="vehicle-detail"><b>Cor:</b> <span class="cor-badge" style="background-color:'+corHex+';"></span> '+(v.COR||'N/I')+' &nbsp; <b>Local:</b> '+(v.ESTABELECIMENTO||'N/I')+'</div>';
+                    html+='<div class="vehicle-detail"><b>Entrada:</b> '+dataExibida+'</div>';
+                    html+='<div class="tag-time">Tempo: '+tempoStr+'</div>';
+                    html+='<button class="btn-block btn-red btn-saida" data-placa="'+v.PLACA.replace(/"/g,'&quot;')+'">REGISTRAR SAIDA</button>';
+                    html+='</div>';
+                });
+            }
+            document.getElementById('ativosList').innerHTML=html;
+            document.querySelectorAll('.btn-saida').forEach(function(btn){btn.addEventListener('click',function(){var p=this.getAttribute('data-placa');if(p){registrarSaida(p);}});});
+        }
+
+        async function registrarEntrada(){
+            var placa=document.getElementById('fPlaca').value.trim().toUpperCase(),tipo=document.getElementById('fTipo').value,cor=document.getElementById('fCor').value,local=document.getElementById('fLocal').value;
+            if(!placa){alert('Digite a placa');return;}if(!tipo){alert('Selecione o tipo');return;}if(!cor){alert('Selecione a cor');return;}if(!local){alert('Selecione o estabelecimento');return;}
+            var ativos=movs.filter(function(m){return m.STATUS==='ATIVO';});
+            if(tipo==='Carro'&&ativos.filter(function(m){return m.TIPO==='Carro';}).length>=vagasCarros){alert('Estacionamento LOTADO para carros!');return;}
+            if(tipo==='Moto'&&ativos.filter(function(m){return m.TIPO==='Moto';}).length>=vagasMotos){alert('Estacionamento LOTADO para motos!');return;}
+            var b=document.getElementById('btnEntrada');b.disabled=true;b.textContent='Registrando...';
+            var dh=formatarData(new Date()),isento=(local!=='Visitante')?'Sim':'Nao';
+            var reg={PLACA:placa,TIPO:tipo,COR:cor,ESTABELECIMENTO:local,ISENTO:isento,ENTRADA:dh,OPERADOR:usuario.nome,STATUS:'ATIVO',SAIDA:'',TEMPO:'',VALOR:'',OBS:''};
+            movs.push(reg);saveLocal();
+            if(API_URL){try{var fd=new FormData();for(var k in reg)fd.append(k,reg[k]);await fetch(API_URL,{method:'POST',body:fd});log('Entrada na planilha');}catch(e){log('Erro: '+e.message);}}
+            document.getElementById('fPlaca').value='';document.getElementById('fTipo').value='';document.getElementById('fCor').value='';document.getElementById('fLocal').value='';
+            refreshUI();b.disabled=false;b.textContent='REGISTRAR ENTRADA';
+        }
+
+        function registrarSaida(placa){
+            log('Saida: '+placa);
+            if(!placa||placa.trim()===''){alert('Placa invalida!');return;}
+            placa=placa.toUpperCase().trim();
+            var item=null;
+            for(var i=movs.length-1;i>=0;i--){if(String(movs[i].PLACA).toUpperCase()===placa&&String(movs[i].STATUS).toUpperCase()==='ATIVO'){item=movs[i];break;}}
+            if(!item){alert('Veiculo nao encontrado!');refreshUI();return;}
+            var now=new Date(),saidaDH=formatarData(now),entrada=parseData(item.ENTRADA);
+            if(isNaN(entrada.getTime()))entrada=new Date();
+            var diffMin=Math.floor((now.getTime()-entrada.getTime())/60000);if(diffMin<0)diffMin=0;
+            var h=Math.floor(diffMin/60),m=diffMin%60,tempoStr=h>0?h+'h '+m+'min':m+'min';
+            var carencia=CARENCIAS[item.ESTABELECIMENTO]||0,valor=0,msgIsencao='';
+            if(item.ISENTO==='Sim'&&diffMin<=carencia){valor=0;msgIsencao='CORTESIA ('+(carencia/60)+'h gratis)';}
+            else{for(var j=0;j<TABELA_PRECOS.length;j++){if(diffMin<=TABELA_PRECOS[j].ate){valor=TABELA_PRECOS[j].valor;break;}}if(item.ISENTO==='Sim'&&diffMin>carencia){msgIsencao='Excedeu carencia';}}
+            item.STATUS='FINALIZADO';item.SAIDA=saidaDH;item.TEMPO=tempoStr;item.VALOR='R$ '+valor.toFixed(2).replace('.',',');saveLocal();
+            
+            if(API_URL){
+                var fd=new FormData();
+                fd.append('action','saida');fd.append('PLACA',item.PLACA);
+                fd.append('SAIDA',saidaDH);fd.append('TEMPO',tempoStr);
+                fd.append('VALOR','R$ '+valor.toFixed(2).replace('.',','));
+                fetch(API_URL,{method:'POST',body:fd}).then(function(r){return r.json();}).then(function(d){log('Planilha: '+JSON.stringify(d));}).catch(function(e){log('Erro: '+e.message);});
+            }
+            
+            reciboAtual='PLAZA PONTAL\n----------\nPlaca: '+placa+'\nVeiculo: '+item.TIPO+'\nCor: '+item.COR+'\nLocal: '+item.ESTABELECIMENTO+'\nEntrada: '+formatarDataExibicao(item.ENTRADA)+'\nSaida: '+saidaDH+'\nTempo: '+tempoStr+'\nValor: R$ '+valor.toFixed(2).replace('.',',')+'\n'+(msgIsencao?msgIsencao+'\n':'')+'Operador: '+usuario.nome+'\n----------\nVolte sempre!';
+            document.getElementById('reciboText').textContent=reciboAtual;
+            document.getElementById('modalRecibo').classList.add('show');
+            refreshUI();
+        }
+
+        function closeModal(){document.getElementById('modalRecibo').classList.remove('show');}
+        function enviarRecibo(){if(reciboAtual)window.open('https://wa.me/?text='+encodeURIComponent(reciboAtual),'_blank');closeModal();}
+
+        function enviarRelatorio(){
+            var finalizados=movs.filter(function(m){return m.STATUS==='FINALIZADO';});
+            var porLocal={},totalCarros=0,totalMotos=0,receitaTotal=0;
+            finalizados.forEach(function(m){
+                var local=m.ESTABELECIMENTO||'Outros';
+                if(!porLocal[local])porLocal[local]={carros:0,motos:0,receita:0};
+                if(m.TIPO==='Moto'){porLocal[local].motos++;totalMotos++;}
+                else{porLocal[local].carros++;totalCarros++;}
+                porLocal[local].receita+=parseFloat((m.VALOR||'0').replace('R$ ','').replace(',','.'))||0;
+                receitaTotal+=parseFloat((m.VALOR||'0').replace('R$ ','').replace(',','.'))||0;
+            });
+            var agora=new Date(),inicio=new Date(agora.getFullYear(),agora.getMonth(),agora.getDate(),6,0,0),fim=new Date(agora.getFullYear(),agora.getMonth(),agora.getDate(),18,0,0);
+            var trabMin=Math.floor((agora-inicio)/60000);if(trabMin<0)trabMin=0;
+            var hTrab=Math.floor(trabMin/60),mTrab=trabMin%60,tempoStr=hTrab+'h '+mTrab+'min';
+            var extraStr='';
+            if(agora>fim){var extMin=Math.floor((agora-fim)/60000);extraStr=' (com '+Math.floor(extMin/60)+'h '+extMin%60+'min hora extra)';}
+            var txt='PLAZA PONTAL\n====================\nOperador: '+usuario.nome+'\nData: '+agora.toLocaleDateString('pt-BR')+'\nPlantao: 6h as 18h (12h)\nTempo: '+tempoStr+extraStr+'\n====================\n\n';
+            for(var l in porLocal){var d=porLocal[l];txt+=l+': '+(d.carros+d.motos)+' veiculos ('+d.carros+' carros, '+d.motos+' motos)\n';}
+            txt+='\n====================\nFATURAMENTO: R$ '+receitaTotal.toFixed(2).replace('.',',')+'\n====================\nPlaza Pontal Parking';
+            window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');
+        }
+
+        var configTaps=0;
+        document.querySelector('.login-icon').addEventListener('click',function(){configTaps++;if(configTaps>=5){configTaps=0;document.getElementById('cfgUrl').value=API_URL;document.getElementById('modalConfig').classList.add('show');}setTimeout(function(){configTaps=0;},2000);});
+        function saveConfig(){var u=document.getElementById('cfgUrl').value.trim();if(u){API_URL=u;localStorage.setItem('_pp_url',u);alert('Salvo!');closeConfig();}}
+        function closeConfig(){document.getElementById('modalConfig').classList.remove('show');}
+        document.addEventListener('keydown',function(e){if(e.key==='Enter'&&document.getElementById('loginScreen').style.display!=='none')doLogin();});
+    </script>
+</body>
+</html>
