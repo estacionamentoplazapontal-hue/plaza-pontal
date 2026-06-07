@@ -35,45 +35,15 @@
             user-select: none;
         }
 
-        .login-screen {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--bg);
-            padding: 24px;
-        }
-
-        .login-box {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 40px 28px;
-            width: 100%;
-            max-width: 360px;
-        }
-
+        .login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg); padding: 24px; }
+        .login-box { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 40px 28px; width: 100%; max-width: 360px; }
         .login-icon { text-align: center; font-size: 48px; margin-bottom: 8px; cursor: pointer; }
-
-        .login-box h1 {
-            text-align: center; font-size: 22px; font-weight: 700; color: var(--green);
-            margin-bottom: 4px; letter-spacing: -0.5px; cursor: pointer;
-        }
-
+        .login-box h1 { text-align: center; font-size: 22px; font-weight: 700; color: var(--green); margin-bottom: 4px; letter-spacing: -0.5px; cursor: pointer; }
         .login-box .subtle { text-align: center; font-size: 13px; color: var(--text2); margin-bottom: 32px; }
-
         .field { margin-bottom: 14px; }
+        .field input { width: 100%; padding: 14px 16px; border-radius: 14px; border: 1.5px solid var(--border); background: var(--bg); color: var(--text); font-size: 15px; }
 
-        .field input {
-            width: 100%; padding: 14px 16px; border-radius: 14px; border: 1.5px solid var(--border);
-            background: var(--bg); color: var(--text); font-size: 15px;
-        }
-
-        .btn {
-            width: 100%; padding: 15px; border: none; border-radius: 14px;
-            font-size: 15px; font-weight: 600; cursor: pointer;
-        }
-
+        .btn { width: 100%; padding: 15px; border: none; border-radius: 14px; font-size: 15px; font-weight: 600; cursor: pointer; }
         .btn-green { background: var(--green); color: #000; }
         .btn-red { background: var(--red); color: #fff; }
         .btn-blue { background: var(--blue); color: #fff; }
@@ -82,49 +52,31 @@
         .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text2); }
 
         .error-msg { color: var(--red); font-size: 13px; text-align: center; margin-top: 8px; display: none; }
-
         .dashboard { min-height: 100vh; background: var(--bg); }
-
-        .header {
-            background: var(--card); border-bottom: 1px solid var(--border);
-            padding: 16px 20px; display: flex; justify-content: space-between;
-            align-items: center; position: sticky; top: 0; z-index: 50;
-        }
-
+        .header { background: var(--card); border-bottom: 1px solid var(--border); padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 50; }
         .header h2 { font-size: 17px; font-weight: 700; color: var(--green); }
         .header .op { font-size: 12px; color: var(--text2); }
-
-        .content { padding: 16px; max-width: 520px; margin: 0 auto; }
+        .content { padding: 16px; max-width: 100%; margin: 0 auto; }
 
         .stats-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
-
-        .stat-item {
-            background: var(--card); border: 1px solid var(--border);
-            border-radius: 14px; padding: 14px 10px; text-align: center;
-        }
-
+        .stat-item { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px 10px; text-align: center; }
         .stat-item .val { font-size: 26px; font-weight: 700; }
         .stat-item .val.green { color: var(--green); }
         .stat-item .val.blue { color: var(--blue); }
         .stat-item .val.yellow { color: var(--yellow); }
-
         .stat-item .lbl { font-size: 10px; color: var(--text2); margin-top: 4px; }
         .stat-item .sub { font-size: 9px; color: var(--text2); margin-top: 2px; }
 
         .card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 18px; margin-bottom: 14px; }
         .card h3 { font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+        .card-list { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 18px; margin-bottom: 14px; max-height: 70vh; overflow-y: auto; }
 
         .form-row { display: flex; flex-direction: column; gap: 8px; }
         .form-row-inline { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-
-        .form-row input, .form-row select, .form-row-inline input, .form-row-inline select {
-            padding: 13px 14px; border-radius: 12px; border: 1.5px solid var(--border);
-            background: var(--bg); color: var(--text); font-size: 14px;
-        }
+        .form-row input, .form-row select, .form-row-inline input, .form-row-inline select { padding: 13px 14px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--bg); color: var(--text); font-size: 14px; }
 
         .vehicle-item { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 14px; margin-bottom: 8px; }
         .vehicle-item.vip { border-color: var(--gold); box-shadow: 0 0 10px rgba(245,158,11,0.15); }
-
         .vehicle-placa { font-size: 19px; font-weight: 700; letter-spacing: 0.5px; }
         .vehicle-tipo { display: inline-block; font-size: 13px; margin-left: 6px; }
 
@@ -136,40 +88,24 @@
 
         .vehicle-detail { font-size: 12px; color: var(--text2); margin-bottom: 3px; }
         .vehicle-detail b { color: #d4d4d8; font-weight: 500; }
-
-        .vip-info {
-            background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3);
-            border-radius: 10px; padding: 10px; margin: 8px 0;
-        }
+        .vip-info { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); border-radius: 10px; padding: 10px; margin: 8px 0; }
         .vip-info .vip-nome { font-size: 14px; font-weight: 600; color: var(--gold); }
         .vip-info .vip-cargo { font-size: 11px; color: #d4d4d8; }
-
-        .cor-badge {
-            display: inline-block; width: 14px; height: 14px; border-radius: 50%;
-            border: 2px solid #3f3f46; vertical-align: middle; margin-right: 4px;
-        }
+        .cor-badge { display: inline-block; width: 14px; height: 14px; border-radius: 50%; border: 2px solid #3f3f46; vertical-align: middle; margin-right: 4px; }
 
         .btn-block { width: 100%; padding: 11px; border: none; border-radius: 10px; font-weight: 600; font-size: 13px; cursor: pointer; margin-top: 6px; }
         .empty { text-align: center; color: #52525b; padding: 24px; font-size: 13px; }
 
         .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
         .modal-overlay.show { display: flex; }
-
         .modal-box { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 22px; width: 100%; max-width: 380px; }
         .modal-box h3 { font-size: 16px; margin-bottom: 12px; }
-
-        .receipt {
-            background: var(--bg); border-radius: 12px; padding: 14px; font-size: 13px;
-            line-height: 1.7; white-space: pre-wrap; margin-bottom: 14px; max-height: 280px; overflow-y: auto;
-        }
-
+        .receipt { background: var(--bg); border-radius: 12px; padding: 14px; font-size: 13px; line-height: 1.7; white-space: pre-wrap; margin-bottom: 14px; max-height: 280px; overflow-y: auto; }
         .modal-actions { display: flex; gap: 8px; }
         .modal-actions button { flex: 1; padding: 12px; border: none; border-radius: 10px; font-weight: 600; font-size: 13px; cursor: pointer; }
+        select option { background: #1a1a1a; color: #fff; }
 
-        .debug-console {
-            background: #000; color: #0f0; font-family: monospace; font-size: 10px;
-            padding: 8px; border-radius: 8px; margin-top: 8px; max-height: 120px; overflow-y: auto; display: none;
-        }
+        .debug-console { background: #000; color: #0f0; font-family: monospace; font-size: 10px; padding: 8px; border-radius: 8px; margin-top: 8px; max-height: 120px; overflow-y: auto; display: none; }
 
         .admin-section { border: 1px dashed var(--orange); border-radius: 12px; padding: 12px; margin-bottom: 10px; }
         .admin-section h4 { font-size: 12px; color: var(--orange); margin-bottom: 8px; }
@@ -178,12 +114,7 @@
         .admin-row input { padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 13px; text-align: center; }
         .admin-badge { display: inline-block; background: rgba(249,115,22,0.2); color: var(--orange); padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; margin-left: 6px; }
 
-        .toast {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-            background: var(--gold); color: #000; padding: 12px 20px; border-radius: 12px;
-            font-weight: 600; font-size: 14px; z-index: 200; display: none;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.5); text-align: center; max-width: 90%;
-        }
+        .toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #000; padding: 12px 20px; border-radius: 12px; font-weight: 600; font-size: 14px; z-index: 200; display: none; box-shadow: 0 8px 30px rgba(0,0,0,0.5); text-align: center; max-width: 90%; }
         .toast.show { display: block; }
     </style>
 </head>
@@ -221,35 +152,17 @@
 
         <div class="content">
             <div class="stats-row">
-                <div class="stat-item">
-                    <div class="val green" id="vagasCarros">28</div>
-                    <div class="lbl">Vagas Carros</div>
-                    <div class="sub" id="ocupadasCarros">0 ocupadas</div>
-                </div>
-                <div class="stat-item">
-                    <div class="val blue" id="vagasMotos">40</div>
-                    <div class="lbl">Vagas Motos</div>
-                    <div class="sub" id="ocupadasMotos">0 ocupadas</div>
-                </div>
-                <div class="stat-item">
-                    <div class="val yellow" id="stAtivos">0</div>
-                    <div class="lbl">No Patio</div>
-                    <div class="sub">Total veiculos</div>
-                </div>
+                <div class="stat-item"><div class="val green" id="vagasCarros">28</div><div class="lbl">Vagas Carros</div><div class="sub" id="ocupadasCarros">0 ocupadas</div></div>
+                <div class="stat-item"><div class="val blue" id="vagasMotos">40</div><div class="lbl">Vagas Motos</div><div class="sub" id="ocupadasMotos">0 ocupadas</div></div>
+                <div class="stat-item"><div class="val yellow" id="stAtivos">0</div><div class="lbl">No Patio</div><div class="sub">Total veiculos</div></div>
             </div>
 
             <div class="card" id="painelAdmin" style="display:none;">
                 <h3>Painel Admin <span class="admin-badge">ADMIN</span></h3>
                 <div class="admin-section">
                     <h4>Configurar Vagas</h4>
-                    <div class="admin-row">
-                        <label>Vagas Carros:</label>
-                        <input type="number" id="cfgVagasCarros" value="28" min="1" max="200">
-                    </div>
-                    <div class="admin-row">
-                        <label>Vagas Motos:</label>
-                        <input type="number" id="cfgVagasMotos" value="40" min="1" max="300">
-                    </div>
+                    <div class="admin-row"><label>Vagas Carros:</label><input type="number" id="cfgVagasCarros" value="28" min="1" max="200"></div>
+                    <div class="admin-row"><label>Vagas Motos:</label><input type="number" id="cfgVagasMotos" value="40" min="1" max="300"></div>
                     <button class="btn btn-orange btn-block" onclick="salvarVagas()">Salvar Vagas</button>
                 </div>
                 <div class="admin-section" style="border-color: var(--red);">
@@ -271,7 +184,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card-list">
                 <h3>No Patio</h3>
                 <div id="ativosList"></div>
             </div>
@@ -299,10 +212,7 @@
             <h3>Configuracao</h3>
             <p style="font-size:12px;color:var(--text2);margin-bottom:12px;">URL do Google Apps Script</p>
             <input type="text" id="cfgUrl" placeholder="https://script.google.com/..." style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:13px;margin-bottom:12px;">
-            <div style="display:flex;gap:8px;">
-                <button class="btn btn-blue" onclick="saveConfig()">Salvar</button>
-                <button class="btn btn-green" onclick="testarConexao()">Testar</button>
-            </div>
+            <div style="display:flex;gap:8px;"><button class="btn btn-blue" onclick="saveConfig()">Salvar</button><button class="btn btn-green" onclick="testarConexao()">Testar</button></div>
             <button class="btn btn-ghost" style="margin-top:8px;" onclick="closeConfig()">Cancelar</button>
             <div class="debug-console" id="debugConfig" style="display:block;margin-top:8px;"></div>
         </div>
@@ -310,9 +220,7 @@
 
     <script>
         var CARENCIAS = { 'Academia': 120, 'Farmacia': 60, 'Mercado': 60, 'Visitante': 0 };
-        var TABELA_PRECOS = [{ ate: 60, valor: 15 },{ ate: 120, valor: 25 },{ ate: 180, valor: 45 },{ ate: 99999, valor: 90 }];
         var CORES_MAP = {'Branco':'#ffffff','Preto':'#1a1a1a','Prata':'#c0c0c0','Cinza':'#808080','Vermelho':'#ef4444','Azul':'#3b82f6','Verde':'#22c55e','Amarelo':'#eab308','Laranja':'#f97316','Marrom':'#8B4513','Bege':'#f5deb3'};
-
         var vagasCarros = 28, vagasMotos = 40, API_URL = '', usuario = null, movs = [], placasVIP = [], reciboAtual = '', timerInterval = null, debugMode = false;
 
         function parseData(d) {
@@ -388,13 +296,11 @@
 
         function limparTudo(){
             if(!usuario||usuario.tipo!=='Admin'){alert('Apenas administradores!');return;}
-            if(confirm('⚠️ Tem certeza que deseja APAGAR TODOS os dados locais?\n\nIsso não afeta a planilha.')){
-                localStorage.removeItem('_pp_data');movs=[];saveLocal();refreshUI();alert('✅ Dados locais limpos!');
-            }
+            if(confirm('⚠️ Tem certeza que deseja APAGAR TODOS os dados locais?')){localStorage.removeItem('_pp_data');movs=[];saveLocal();refreshUI();alert('✅ Dados locais limpos!');}
         }
 
         async function loadData(){
-            if(API_URL){try{var r=await fetch(API_URL);var d=await r.json();if(d&&d.length>0){movs=d;saveLocal();}document.getElementById('connStatus').textContent='🟢 Online';}catch(e){var local=localStorage.getItem('_pp_data');movs=local?JSON.parse(local):[];document.getElementById('connStatus').textContent='🔴 Offline';}}
+            if(API_URL){try{var r=await fetch(API_URL);var d=await r.json();if(d&&d.length>0){movs=d;saveLocal();log('📡 Dados carregados: '+d.length);}document.getElementById('connStatus').textContent='🟢 Online';}catch(e){var local=localStorage.getItem('_pp_data');movs=local?JSON.parse(local):[];document.getElementById('connStatus').textContent='🔴 Offline';}}
             else{var local=localStorage.getItem('_pp_data');movs=local?JSON.parse(local):[];document.getElementById('connStatus').textContent='💾 Local';}
             refreshUI();
         }
@@ -410,20 +316,48 @@
             document.getElementById('ocupadasCarros').textContent=carrosAtivos+' ocupadas';
             document.getElementById('ocupadasMotos').textContent=motosAtivos+' ocupadas';
             document.getElementById('stAtivos').textContent=ativos.length;
+
             var now=new Date(),html='';
             if(ativos.length===0){html='<div class="empty">Patio vazio</div>';}
-            else{ativos.forEach(function(v){var entrada=parseData(v.ENTRADA),diffMin=Math.floor((now.getTime()-entrada.getTime())/60000);if(diffMin<0)diffMin=0;var h=Math.floor(diffMin/60),m=diffMin%60,tempoStr=h>0?h+'h '+m+'min':m+'min';var corHex=CORES_MAP[v.COR]||'#52525b';var vip=buscarVIP(v.PLACA);var statusTag='',statusClasse='';
-            if(vip){statusTag='⭐ VIP';statusClasse='tag-vip';}
-            else if(v.ISENTO==='Sim'){var carencia=CARENCIAS[v.ESTABELECIMENTO]||0;if(diffMin<=carencia){statusTag='Isento ('+(carencia/60)+'h)';statusClasse='tag-free';}else{var ve=0;for(var j=0;j<TABELA_PRECOS.length;j++){if(diffMin<=TABELA_PRECOS[j].ate){ve=TABELA_PRECOS[j].valor;break;}}statusTag='R$ '+ve.toFixed(2).replace('.',',');statusClasse='tag-active';}}
-            else{var ve=0;for(var j=0;j<TABELA_PRECOS.length;j++){if(diffMin<=TABELA_PRECOS[j].ate){ve=TABELA_PRECOS[j].valor;break;}}statusTag='R$ '+ve.toFixed(2).replace('.',',');statusClasse='tag-active';}
-            html+='<div class="vehicle-item'+(vip?' vip':'')+'">';
-            html+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><div><span class="vehicle-placa">'+v.PLACA+'</span><span class="vehicle-tipo">'+(v.TIPO||'N/I')+'</span></div><span class="tag '+statusClasse+'">'+statusTag+'</span></div>';
-            if(vip){html+='<div class="vip-info"><div class="vip-nome">⭐ '+vip.NOME+'</div><div class="vip-cargo">'+vip.CARGO+(vip.EMPRESA?' - '+vip.EMPRESA:'')+'</div></div>';}
-            html+='<div class="vehicle-detail"><b>Cor:</b> <span class="cor-badge" style="background-color:'+corHex+';"></span> '+(v.COR||'N/I')+' | <b>Local:</b> '+(v.ESTABELECIMENTO||'N/I')+'</div>';
-            html+='<div class="vehicle-detail"><b>Entrada:</b> '+formatarDataExibicao(v.ENTRADA)+'</div>';
-            html+='<div class="tag-time">⏱ '+tempoStr+'</div>';
-            html+='<button class="btn-block btn-red" onclick="registrarSaida(\''+v.PLACA+'\')">REGISTRAR SAIDA</button></div>';});}
+            else{
+                for(var i=0;i<ativos.length;i++){
+                    var v=ativos[i];
+                    var entrada=parseData(v.ENTRADA);
+                    var diffMin=Math.floor((now.getTime()-entrada.getTime())/60000);
+                    if(diffMin<0)diffMin=0;
+                    var h=Math.floor(diffMin/60),m=diffMin%60,tempoStr=h+'h '+m+'min';
+                    var corHex=CORES_MAP[v.COR]||'#52525b';
+                    var vip=buscarVIP(v.PLACA);
+                    var statusTag,statusClasse;
+
+                    if(vip){statusTag='⭐ VIP';statusClasse='tag-vip';}
+                    else if(v.ISENTO==='Sim'){
+                        var carencia=CARENCIAS[v.ESTABELECIMENTO]||0;
+                        if(diffMin<=carencia){statusTag='Isento ('+(carencia/60)+'h)';statusClasse='tag-free';}
+                        else{var ve=0;var exc=diffMin-carencia;if(exc<=60)ve=15;else if(exc<=120)ve=25;else if(exc<=180)ve=35;else if(exc<=240)ve=45;else ve=90;statusTag='R$ '+ve.toFixed(2).replace('.',',');statusClasse='tag-active';}
+                    }else{var ve=0;if(diffMin<=60)ve=15;else if(diffMin<=120)ve=25;else if(diffMin<=180)ve=35;else if(diffMin<=240)ve=45;else ve=90;statusTag='R$ '+ve.toFixed(2).replace('.',',');statusClasse='tag-active';}
+
+                    html+='<div class="vehicle-item'+(vip?' vip':'')+'" data-placa="'+v.PLACA+'">';
+                    html+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><div><span class="vehicle-placa">'+v.PLACA+'</span><span class="vehicle-tipo">'+(v.TIPO||'N/I')+'</span></div><span class="tag '+statusClasse+'">'+statusTag+'</span></div>';
+                    if(vip){html+='<div class="vip-info"><div class="vip-nome">⭐ '+vip.NOME+'</div><div class="vip-cargo">'+vip.CARGO+(vip.EMPRESA?' - '+vip.EMPRESA:'')+'</div></div>';}
+                    html+='<div class="vehicle-detail"><b>Cor:</b> <span class="cor-badge" style="background-color:'+corHex+';"></span> '+(v.COR||'N/I')+' | <b>Local:</b> '+(v.ESTABELECIMENTO||'N/I')+'</div>';
+                    html+='<div class="vehicle-detail"><b>Entrada:</b> '+formatarDataExibicao(v.ENTRADA)+'</div>';
+                    html+='<div class="tag-time">⏱ '+tempoStr+'</div>';
+                    html+='<button class="btn-block btn-red btn-saida-item">REGISTRAR SAIDA</button>';
+                    html+='</div>';
+                }
+            }
             document.getElementById('ativosList').innerHTML=html;
+
+            var botoes=document.querySelectorAll('.btn-saida-item');
+            for(var i=0;i<botoes.length;i++){
+                (function(index){
+                    botoes[i].addEventListener('click',function(){
+                        var placa=ativos[index].PLACA;
+                        registrarSaida(placa);
+                    });
+                })(i);
+            }
         }
 
         function registrarEntrada(){
@@ -442,20 +376,40 @@
         }
 
         function registrarSaida(placa){
-            if(!placa||placa.trim()===''){alert('Placa invalida!');return;}placa=placa.toUpperCase().trim();
-            var item=null;for(var i=movs.length-1;i>=0;i--){if(String(movs[i].PLACA).toUpperCase()===placa&&String(movs[i].STATUS).toUpperCase()==='ATIVO'){item=movs[i];break;}}
+            if(!placa||placa.trim()===''){alert('Placa invalida!');return;}
+            placa=placa.toUpperCase().trim();
+            var item=null;
+            for(var i=movs.length-1;i>=0;i--){if(String(movs[i].PLACA).toUpperCase()===placa&&String(movs[i].STATUS).toUpperCase()==='ATIVO'){item=movs[i];break;}}
             if(!item){alert('Veiculo nao encontrado!');refreshUI();return;}
+
             var now=new Date(),saidaDH=formatarData(now),entrada=parseData(item.ENTRADA);
             if(isNaN(entrada.getTime()))entrada=new Date();
-            var diffMin=Math.floor((now.getTime()-entrada.getTime())/60000);if(diffMin<0)diffMin=0;
-            var h=Math.floor(diffMin/60),m=diffMin%60,tempoStr=h>0?h+'h '+m+'min':m+'min';
+            var diffMs=now.getTime()-entrada.getTime();
+            var diffMin=Math.floor(diffMs/60000);
+            if(diffMin<0)diffMin=0;
+            var horasTotal=diffMin/60;
+            var h=Math.floor(diffMin/60),m=diffMin%60,tempoStr=h+'h '+m+'min';
+
             var vip=buscarVIP(item.PLACA),valor=0,msgIsencao='';
+
             if(vip){valor=0;msgIsencao='⭐ VIP: '+vip.NOME+' - '+vip.CARGO;}
-            else if(item.ISENTO==='Sim'){var carencia=CARENCIAS[item.ESTABELECIMENTO]||0;if(diffMin<=carencia){valor=0;msgIsencao='CORTESIA';}else{for(var j=0;j<TABELA_PRECOS.length;j++){if(diffMin<=TABELA_PRECOS[j].ate){valor=TABELA_PRECOS[j].valor;break;}}}}
-            else{for(var j=0;j<TABELA_PRECOS.length;j++){if(diffMin<=TABELA_PRECOS[j].ate){valor=TABELA_PRECOS[j].valor;break;}}}
-            item.STATUS='FINALIZADO';item.SAIDA=saidaDH;item.TEMPO=tempoStr;item.VALOR='R$ '+valor.toFixed(2).replace('.',',');saveLocal();
-            if(API_URL){var fd=new FormData();fd.append('action','saida');fd.append('PLACA',item.PLACA);fd.append('SAIDA',saidaDH);fd.append('TEMPO',tempoStr);fd.append('VALOR','R$ '+valor.toFixed(2).replace('.',','));fetch(API_URL,{method:'POST',body:fd}).catch(function(e){});}
-            reciboAtual='PLAZA PONTAL\n----------\nPlaca: '+placa+'\nVeiculo: '+item.TIPO+'\nCor: '+item.COR+'\nLocal: '+item.ESTABELECIMENTO+'\nEntrada: '+formatarDataExibicao(item.ENTRADA)+'\nSaida: '+saidaDH+'\nTempo: '+tempoStr+'\nValor: R$ '+valor.toFixed(2).replace('.',',')+'\n'+(msgIsencao?msgIsencao+'\n':'')+'Operador: '+usuario.nome+'\n----------\nVolte sempre!';
+            else if(item.ISENTO==='Sim'){
+                var carenciaMin=CARENCIAS[item.ESTABELECIMENTO]||0;
+                var carenciaHoras=carenciaMin/60;
+                var horasExcedentes=horasTotal-carenciaHoras;
+                
+                if(horasExcedentes<=0){valor=0;msgIsencao='CORTESIA ('+carenciaHoras+'h gratis)';}
+                else{msgIsencao='Excedeu carencia de '+carenciaHoras+'h';
+                    if(horasExcedentes<=1)valor=15;else if(horasExcedentes<=2)valor=25;else if(horasExcedentes<=3)valor=35;else if(horasExcedentes<=4)valor=45;else valor=90;}
+            }else{
+                if(horasTotal<=1)valor=15;else if(horasTotal<=2)valor=25;else if(horasTotal<=3)valor=35;else if(horasTotal<=4)valor=45;else valor=90;
+            }
+
+            item.STATUS='FINALIZADO';item.SAIDA=saidaDH;item.TEMPO=tempoStr;item.VALOR='R$ '+valor.toFixed(2).replace('.',',');item.OPERADOR_SAIDA=usuario.nome;saveLocal();
+
+            if(API_URL){var fd=new FormData();fd.append('action','saida');fd.append('PLACA',item.PLACA);fd.append('SAIDA',saidaDH);fd.append('TEMPO',tempoStr);fd.append('VALOR','R$ '+valor.toFixed(2).replace('.',','));fd.append('OPERADOR_SAIDA',usuario.nome);fetch(API_URL,{method:'POST',body:fd}).catch(function(e){});}
+
+            reciboAtual='PLAZA PONTAL\n----------\nPlaca: '+placa+'\nVeiculo: '+item.TIPO+'\nCor: '+item.COR+'\nLocal: '+item.ESTABELECIMENTO+'\nEntrada: '+formatarDataExibicao(item.ENTRADA)+'\nSaida: '+saidaDH+'\nTempo: '+tempoStr+'\nValor: R$ '+valor.toFixed(2).replace('.',',')+'\n'+(msgIsencao?msgIsencao+'\n':'')+'Operador entrada: '+item.OPERADOR+'\nOperador saida: '+usuario.nome+'\n----------\nVolte sempre!';
             document.getElementById('reciboText').textContent=reciboAtual;document.getElementById('modalRecibo').classList.add('show');refreshUI();
         }
 
@@ -463,20 +417,38 @@
         function enviarRecibo(){if(reciboAtual)window.open('https://wa.me/?text='+encodeURIComponent(reciboAtual),'_blank');closeModal();}
 
         function enviarRelatorio(){
-            var finalizados=movs.filter(function(m){return m.STATUS==='FINALIZADO';});
-            var porLocal={},totalCarros=0,totalMotos=0,receitaTotal=0;
-            finalizados.forEach(function(m){var local=m.ESTABELECIMENTO||'Outros';if(!porLocal[local])porLocal[local]={carros:0,motos:0,receita:0};if(m.TIPO==='Moto'){porLocal[local].motos++;totalMotos++;}else{porLocal[local].carros++;totalCarros++;}var v=parseFloat((m.VALOR||'0').replace('R$ ','').replace(',','.'))||0;porLocal[local].receita+=v;receitaTotal+=v;});
-            var agora=new Date(),hoje=new Date(agora.getFullYear(),agora.getMonth(),agora.getDate()),primeiroRegistro=null;
-            for(var i=0;i<movs.length;i++){var dr=parseData(movs[i].ENTRADA||movs[i].SAIDA);if(dr>=hoje&&(!primeiroRegistro||dr<primeiroRegistro))primeiroRegistro=dr;}
-            if(!primeiroRegistro)primeiroRegistro=new Date(agora.getFullYear(),agora.getMonth(),agora.getDate(),6,0,0);
-            var inicioPlantao=primeiroRegistro,fimPlantao=new Date(agora.getFullYear(),agora.getMonth(),agora.getDate(),18,0,0);
+            var hoje=new Date();
+            var inicioDoDia=new Date(hoje.getFullYear(),hoje.getMonth(),hoje.getDate(),0,0,0);
+            var finalizados=movs.filter(function(m){
+                if(m.STATUS!=='FINALIZADO')return false;
+                var operadorSaida=m.OPERADOR_SAIDA||m.OPERADOR||'';
+                if(operadorSaida!==usuario.nome)return false;
+                var dataSaida=parseData(m.SAIDA);
+                if(!dataSaida||isNaN(dataSaida.getTime()))return false;
+                return dataSaida>=inicioDoDia;
+            });
+            log('📊 Relatório - '+usuario.nome+' - Hoje: '+finalizados.length+' veículos');
+            var porLocal={'Academia':{carros:0,motos:0,receita:0},'Farmacia':{carros:0,motos:0,receita:0},'Mercado':{carros:0,motos:0,receita:0},'Visitante':{carros:0,motos:0,receita:0}};
+            var totalCarros=0,totalMotos=0,receitaTotal=0;
+            finalizados.forEach(function(m){
+                var local=m.ESTABELECIMENTO||'Visitante';
+                if(!porLocal[local])porLocal[local]={carros:0,motos:0,receita:0};
+                if(m.TIPO==='Moto'){porLocal[local].motos++;totalMotos++;}
+                else{porLocal[local].carros++;totalCarros++;}
+                var v=parseFloat((m.VALOR||'0').replace('R$ ','').replace(',','.'))||0;
+                porLocal[local].receita+=v;receitaTotal+=v;
+            });
+            var agora=new Date();
+            var inicioPlantao=new Date(hoje.getFullYear(),hoje.getMonth(),hoje.getDate(),6,0,0);
+            var fimPlantao=new Date(hoje.getFullYear(),hoje.getMonth(),hoje.getDate(),18,0,0);
             var trabMin=Math.floor((agora-inicioPlantao)/60000);if(trabMin<0)trabMin=0;
             var hTrab=Math.floor(trabMin/60),mTrab=trabMin%60,tempoStr=hTrab+'h '+mTrab+'min';
-            var extraStr='';if(agora>fimPlantao){var extMin=Math.floor((agora-fimPlantao)/60000);extraStr=' (+'+Math.floor(extMin/60)+'h'+extMin%60+'min extra)';}
-            var horaInicio=primeiroRegistro.getHours().toString().padStart(2,'0')+':'+primeiroRegistro.getMinutes().toString().padStart(2,'0');
-            var txt='PLAZA PONTAL\n====================\nOperador: '+usuario.nome+'\nData: '+agora.toLocaleDateString('pt-BR')+'\nInicio: '+horaInicio+' | 6h as 18h\nTempo: '+tempoStr+extraStr+'\n====================\n\n';
-            for(var l in porLocal){var d=porLocal[l];txt+=l+': '+(d.carros+d.motos)+' veiculos ('+d.carros+' carros, '+d.motos+' motos)\n';}
-            txt+='\n====================\nFATURAMENTO: R$ '+receitaTotal.toFixed(2).replace('.',',')+'\n====================\nPlaza Pontal Parking';
+            var extraStr='';if(agora>fimPlantao){var extMin=Math.floor((agora-fimPlantao)/60000);if(extMin>0)extraStr=' (+'+Math.floor(extMin/60)+'h'+extMin%60+'min extra)';}
+            var horaInicio=inicioPlantao.getHours().toString().padStart(2,'0')+':'+inicioPlantao.getMinutes().toString().padStart(2,'0');
+            var txt='PLAZA PONTAL\n====================\nOperador: '+usuario.nome+'\nData: '+hoje.toLocaleDateString('pt-BR')+'\nPlantao: 6h as 18h\nInicio: '+horaInicio+' | Tempo: '+tempoStr+extraStr+'\n====================\n\n';
+            if(finalizados.length===0){txt+='Nenhum veiculo finalizado neste plantao.\n';}
+            else{var ordem=['Academia','Farmacia','Mercado','Visitante'];for(var i=0;i<ordem.length;i++){var l=ordem[i];var d=porLocal[l];txt+=l+': '+d.carros+' carros, '+d.motos+' motos\n';}}
+            txt+='\n====================\nCarros: '+totalCarros+' | Motos: '+totalMotos+'\nFATURAMENTO: R$ '+receitaTotal.toFixed(2).replace('.',',')+'\n====================\nPlaza Pontal Parking';
             window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');
         }
 
